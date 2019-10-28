@@ -14,7 +14,7 @@ import java.math.BigInteger;
 public class Group0 {
         public static void main(String[] args) throws InterruptedException, FileNotFoundException,IOException {
                 // testing the comparator:
-		Data.test_Data(); // This MUST be commented out for your submission to the competition!
+		//Data.test_Data(); // This MUST be commented out for your submission to the competition!
 		
                 if (args.length < 2) {
                         System.out.println("Please run with two command line arguments: input and output file names");

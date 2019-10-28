@@ -55,6 +55,9 @@ public class Group13 {
         // Note: you may change the return type of the method.
         // You would need to provide your own function that prints your sorted array to
         // a file in the exact same format that my program outputs
+
+
+        // # --------------------   We could try to make an ArrayList and add Data objects to it instead of making Data objects twice   ----------------------------- #
         private static Data[] sort(String[] toSort) {
                 Data[] toSortData = new Data[toSort.length];
                 for (int i = 0; i < toSort.length; ++i) {
@@ -92,11 +95,14 @@ public class Group13 {
                         if (s1.value.compareTo(s2.value) != 0) {
                                 return s1.value.compareTo(s2.value);
                         }
-                        if (s1.type < s2.type) {
-                                return -1;
-                        }
-                        if (s1.type > s2.type) {
-                                return 1;
+                        // if (s1.type < s2.type) {
+                        //         return -1;
+                        // }
+                        // if (s1.type > s2.type) {
+                        //         return 1;
+                        // }
+                        if (s1.type != s2.type){
+                                return s1.type-s2.type;
                         }
                         int cmp;
 
@@ -139,19 +145,15 @@ public class Group13 {
                 public BigInteger whole; // Arbitrary Prection for whole number (not needed... but makes the Big Integer
                                          // arithmetic easier)
                 public int type = -1; // -1 unspecified, 0 decimal, 1 mixed, 2 pure
-                public BigInteger bigNumerator; // The value of all expressions can be internally represented as
-                                                // bigNumerator/denominator
+                
                 public BigDecimal value;
 
                 public String exprLine; // The original string-- useful to outputting at the end.
 
                 public Data(String line) {
-                        int posSlash = -1; // Assume no slash
-                        int posSpace = -1; // No space
-                        int posDot = -1; // And no period
-                        String powerTen = "1"; // Decimals need a denominator with a power of 10 but we represent as a
-                                               // string. This is the leading 1
-
+                        int posSlash; // Assume no slash
+                        int posSpace; // No space
+                        
                         exprLine = new String(line); // Make a copy of the string
                         // NOTE: If the input is well-formed only one of the following three situations
                         // can arise
@@ -169,7 +171,7 @@ public class Group13 {
                                         value = (new BigDecimal(exprLine.substring(0, posSpace))).add((new BigDecimal(exprLine.substring(posSpace + 1, posSlash))).divide((new BigDecimal(exprLine.substring(posSlash + 1))), 
                                                                                                                                                                            new MathContext(20, RoundingMode.HALF_UP)));
 
-                                } else { // We found a slash *but* no space
+                                } else{ // We found a slash *but* no space
                                         type = 2; // Set to type pure fraction
                                         whole = new BigInteger("0"); // Not really defined for pure fractions... but
                                                                      // simplifies bigNumerator calculation below
@@ -189,10 +191,9 @@ public class Group13 {
                                 // value = (new BigDecimal(whole)).add((new BigDecimal(numerator)).divide((new BigDecimal(denominator)), new MathContext(20, RoundingMode.HALF_UP)));
                                 
                         }
-                        posDot = exprLine.indexOf("."); // Find the period (if any)
-                        if (posDot != -1) { // We found a period
+                        // posDot = exprLine.indexOf("."); // Find the period (if any)
+                        else { // We found a period
                                 value = new BigDecimal(exprLine);
-
                         }
                         
                         // bigNumerator = (whole.multiply(denominator)).add(numerator);// Make the big
