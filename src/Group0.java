@@ -41,7 +41,7 @@ public class Group0 {
 
         // YOUR SORTING METHOD GOES HERE.
         // You may call other methods and use other classes.
-        // You may ALSO modify the methods, innner classes, etc, of Data[]
+        // You may ALSO modify the methods, inner classes, etc, of Data[]
         // But not in way that transfers information from the warmup sort to the timed sort.
         // Note: you may change the return type of the method.
         // You would need to provide your own function that prints your sorted array to

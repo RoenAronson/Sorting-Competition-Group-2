@@ -28,7 +28,8 @@ public class DataGenerator2019 {
         makeSet("data1.txt",1000);
         makeSet("data2.txt",1000);
         makeSet("data3.txt",10000);
-
+		makeSet("dataLarge1.txt", 1000000);
+		makeSet("dataLarge2.txt", 1000000);
     }
 
     private static void makeSet(String outFileName, int n) throws FileNotFoundException,IOException {
